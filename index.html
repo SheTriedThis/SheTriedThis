@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sex or What? 🔥 Hot & Wild Feed</title>
+  <style>
+    body { 
+      margin:0; 
+      background:#0a0a0a; 
+      color:#fff; 
+      font-family:Arial, sans-serif; 
+      overflow-x:hidden; 
+    }
+    .header {
+      background: linear-gradient(#ff0066, #660022);
+      padding: 18px;
+      text-align: center;
+      font-size: 1.9em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(255,0,80,0.5);
+    }
+    .feed { 
+      display:flex; 
+      flex-direction:column; 
+      align-items:center; 
+      padding: 15px 0;
+    }
+    .video-card {
+      width:100%; 
+      max-width:430px; 
+      margin:18px 0; 
+      background:#1a1a1a; 
+      border-radius:16px; 
+      overflow:hidden;
+      box-shadow:0 6px 25px rgba(255,0,100,0.5);
+      transition: all 0.3s;
+    }
+    .video-card:hover {
+      transform: scale(1.03);
+    }
+    .video-container { 
+      position:relative; 
+    }
+    iframe, video { 
+      width:100%; 
+      height:520px; 
+      display:block; 
+      background:#000;
+    }
+    .overlay {
+      position:absolute; 
+      bottom:0; left:0; right:0; 
+      background:linear-gradient(transparent, rgba(0,0,0,0.95));
+      padding:30px 15px 20px; 
+      color:#fff;
+    }
+    .title { 
+      font-size:1.35em; 
+      font-weight:bold; 
+      margin:0 0 10px; 
+      line-height:1.3;
+    }
+    .views { 
+      font-size:0.9em; 
+      color:#ff99cc; 
+      margin-bottom:12px; 
+    }
+    .btn { 
+      background:#ff0066; 
+      color:#fff; 
+      border:none; 
+      padding:14px 28px; 
+      border-radius:50px; 
+      font-weight:bold; 
+      cursor:pointer; 
+      width:100%; 
+      font-size:1.05em;
+    }
+    .ad-placeholder { 
+      background:#1f1f1f; 
+      padding:22px; 
+      text-align:center; 
+      margin:25px 0; 
+      color:#ff99cc; 
+      font-size:1em;
+      border: 2px dashed #ff0066;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Sex or What? 🔥 Trending Wild on X Right Now</div>
+
+  <div class="feed" id="feed"></div>
+
+  <script>
+    // === Your Adsterra Links ===
+    const adsterraPopunder = "https://www.profitablecpmratenetwork.com/qu6uwm47?key=9f6a471098891cc400d4992f555fdbab";
+    const adsterraBanner   = "https://www.profitablecpmratenetwork.com/mzbtt84s?key=ddfe950486ef3a14ca3e25fa20024b03";
+
+    const videos = [
+      {
+        title: "Sex or What? She saw this on X and tried it last night... now she can't stop moaning 😈",
+        views: "487K views • Exploding on X",
+        embed: "https://www.example.com/embed/x-video1"   // ← Replace with real X embed code
+      },
+      {
+        title: "POV: She begged him to go harder after watching this clip on X... Her face says everything 🔥",
+        views: "312K views • Viral",
+        embed: "https://www.example.com/embed/x-video2"
+      },
+      {
+        title: "Sex or What? This one position she found on X made her legs shake for 20 minutes straight",
+        views: "689K views • Trending Hard",
+        embed: "https://www.example.com/embed/x-video3"
+      },
+      {
+        title: "She said 'just the tip' on X live... what happened 5 minutes later will shock you 😱",
+        views: "254K views • Hot Right Now",
+        embed: "https://www.example.com/embed/x-video4"
+      },
+      {
+        title: "Doctors are mad at this trick she learned from X... She came 3 times in one night",
+        views: "521K views",
+        embed: "https://www.example.com/embed/x-video5"
+      }
+    ];
+
+    function createVideoCard(video) {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = `
+        <div class="video-container">
+          <iframe src="${video.embed}" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+          <div class="overlay">
+            <p class="views">${video.views}</p>
+            <p class="title">${video.title}</p>
+            <button class="btn" onclick="watchVideo('${video.embed}')">Watch Full Hot Scene →</button>
+          </div>
+        </div>
+        <div class="ad-placeholder">
+          <a href="${adsterraBanner}" target="_blank" style="color:#ff99cc; text-decoration:none;">
+            🔥 Sponsored Hot Deal - Tap Here
+          </a>
+        </div>
+      `;
+      return card;
+    }
+
+    function loadFeed() {
+      const feed = document.getElementById('feed');
+      videos.forEach((video, index) => {
+        feed.appendChild(createVideoCard(video));
+
+        // Trigger popunder every 2 videos for better earnings
+        if ((index + 1) % 2 === 0) {
+          setTimeout(() => {
+            window.open(adsterraPopunder, '_blank');
+          }, 800);
+        }
+      });
+    }
+
+    function watchVideo(embedUrl) {
+      window.open(embedUrl, '_blank');
+      // Extra popunder on click (good for revenue)
+      setTimeout(() => {
+        window.open(adsterraPopunder, '_blank');
+      }, 500);
+    }
+
+    // Load everything immediately (no warning gate)
+    window.onload = loadFeed;
+  </script>
+</body>
+</html>
