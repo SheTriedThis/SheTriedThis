@@ -3,178 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sex or What? 🔥 Hot & Wild Feed</title>
+  <title>Trending Right Now</title>
   <style>
-    body { 
-      margin:0; 
-      background:#0a0a0a; 
-      color:#fff; 
-      font-family:Arial, sans-serif; 
-      overflow-x:hidden; 
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
     .header {
-      background: linear-gradient(#ff0066, #660022);
-      padding: 18px;
+      background: linear-gradient(135deg, #8B0000, #3C0000);
+      padding: 28px 15px;
       text-align: center;
-      font-size: 1.9em;
-      font-weight: bold;
+      font-size: 2.25em;
+      font-weight: 800;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 10px rgba(255,0,80,0.5);
+      box-shadow: 0 6px 25px rgba(139, 0, 0, 0.7);
     }
-    .feed { 
-      display:flex; 
-      flex-direction:column; 
-      align-items:center; 
-      padding: 15px 0;
+    .live-counter {
+      background: #1c1c1c;
+      padding: 14px;
+      text-align: center;
+      font-size: 1.08em;
+      color: #ffaa66;
+      font-weight: 600;
+      border-bottom: 2px solid #660000;
+    }
+    .feed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 12px;
     }
     .video-card {
-      width:100%; 
-      max-width:430px; 
-      margin:18px 0; 
-      background:#1a1a1a; 
-      border-radius:16px; 
-      overflow:hidden;
-      box-shadow:0 6px 25px rgba(255,0,100,0.5);
-      transition: all 0.3s;
+      width: 100%;
+      max-width: 460px;
+      margin: 28px 0;
+      background: #1c1c1c;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(139, 0, 0, 0.6);
+      transition: all 0.4s ease;
     }
     .video-card:hover {
-      transform: scale(1.03);
+      transform: translateY(-8px);
+      box-shadow: 0 18px 50px rgba(255, 80, 80, 0.5);
     }
-    .video-container { 
-      position:relative; 
+    .trending-ribbon {
+      position: absolute;
+      top: 12px;
+      left: -8px;
+      background: #c8102e;
+      color: white;
+      padding: 4px 32px;
+      font-size: 0.82em;
+      font-weight: 700;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      z-index: 10;
     }
-    iframe, video { 
-      width:100%; 
-      height:520px; 
-      display:block; 
-      background:#000;
+    .thumbnail-container {
+      position: relative;
+      height: 280px;
+      background: #000;
+      cursor: pointer;
     }
-    .overlay {
-      position:absolute; 
-      bottom:0; left:0; right:0; 
-      background:linear-gradient(transparent, rgba(0,0,0,0.95));
-      padding:30px 15px 20px; 
-      color:#fff;
+    .thumbnail-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .title { 
-      font-size:1.35em; 
-      font-weight:bold; 
-      margin:0 0 10px; 
-      line-height:1.3;
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(200, 16, 46, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: white;
+      box-shadow: 0 0 25px rgba(255, 60, 60, 0.8);
+      transition: all 0.3s;
     }
-    .views { 
-      font-size:0.9em; 
-      color:#ff99cc; 
-      margin-bottom:12px; 
+    .thumbnail-container:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(255, 68, 68, 1);
     }
-    .btn { 
-      background:#ff0066; 
-      color:#fff; 
-      border:none; 
-      padding:14px 28px; 
-      border-radius:50px; 
-      font-weight:bold; 
-      cursor:pointer; 
-      width:100%; 
-      font-size:1.05em;
+    .title {
+      font-size: 1.52em;
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 18px 20px 8px;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
-    .ad-placeholder { 
-      background:#1f1f1f; 
-      padding:22px; 
-      text-align:center; 
-      margin:25px 0; 
-      color:#ff99cc; 
-      font-size:1em;
-      border: 2px dashed #ff0066;
+    .views {
+      font-size: 0.95em;
+      color: #ffbb77;
+      margin: 0 20px 12px;
+      font-weight: 600;
+    }
+    .comments-section {
+      background: #181818;
+      padding: 18px 20px;
+      border-top: 1px solid #330000;
+    }
+    .comment {
+      font-size: 0.87em;
+      color: #e0e0e0;
+      margin-bottom: 13px;
+      line-height: 1.48;
+    }
+    .comment-user {
+      color: #ffcc88;
+      font-weight: 600;
+    }
+    .reaction {
+      color: #ff6666;
+      margin-left: 6px;
+    }
+    .btn {
+      background: linear-gradient(#c8102e, #8B0000);
+      color: #fff;
+      border: none;
+      padding: 19px 34px;
+      border-radius: 50px;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.25em;
+      margin: 16px 20px 10px;
+      box-shadow: 0 8px 30px rgba(200, 16, 46, 0.6);
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(#ff4455, #c8102e);
+      transform: scale(1.05);
+    }
+    .ad-placeholder {
+      background: #181818;
+      padding: 28px 18px;
+      text-align: center;
+      margin: 10px 0 20px;
+      color: #ffbb77;
+      font-size: 1.05em;
+      border: 2px dashed #660000;
+      border-radius: 16px;
+    }
+    .loader {
+      text-align: center;
+      padding: 35px;
+      color: #ffaa66;
+      font-size: 1.15em;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">Sex or What? 🔥 Trending Wild on X Right Now</div>
+  <!-- Adsterra Popunder -->
+  <script src="https://pl29068020.profitablecpmratenetwork.com/4c/ab/9c/4cab9cf40bb7a6689f7720914e49589a.js"></script>
+
+  <!-- Social Bar -->
+  <script src="https://pl29068023.profitablecpmratenetwork.com/e0/78/6f/e0786f5180b4646653026bb83b6cda60.js"></script>
+
+  <div class="header">Trending Right Now</div>
+
+  <div class="live-counter" id="live-counter">
+    🔥 <span id="viewer-count">15,843</span> people watching live
+  </div>
 
   <div class="feed" id="feed"></div>
+  <div id="loader" class="loader" style="display:none;">Loading more trending clips...</div>
 
   <script>
-    // === Your Adsterra Links ===
-    const adsterraPopunder = "https://www.profitablecpmratenetwork.com/qu6uwm47?key=9f6a471098891cc400d4992f555fdbab";
-    const adsterraBanner   = "https://www.profitablecpmratenetwork.com/mzbtt84s?key=ddfe950486ef3a14ca3e25fa20024b03";
+    const mainSmartlink = "https://www.profitablecpmratenetwork.com/uentjr40?key=2580597d7eff3ff386a1ad9e377bf0b5";
+    const secondarySmartlink = "https://www.profitablecpmratenetwork.com/qu6uwm47?key=9f6a471098891cc400d4992f555fdbab";
 
-    const videos = [
+    let videos = [
       {
-        title: "Sex or What? She saw this on X and tried it last night... now she can't stop moaning 😈",
-        views: "487K views • Exploding on X",
-        embed: "https://www.example.com/embed/x-video1"   // ← Replace with real X embed code
+        title: "She tried that filthy new position she saw online… she squirted so hard the sheets were soaked",
+        views: "428K views • Trending",
+        thumb: "https://via.placeholder.com/460x280/1a1a1a/ffffff?text=Hot+Position+Teaser",
+        comments: [
+          { user: "jake_miller88", text: "Did this with my girl Friday night… she came twice back to back. Crazy.", likes: "237" },
+          { user: "danny_k", text: "The shaking legs part is 100% real 😂", likes: "189" },
+          { user: "chris_torres", text: "Trying this tonight. Wish me luck", likes: "98" },
+          { user: "ryan_23", text: "Saved. This one is dangerous", likes: "145" }
+        ]
       },
       {
-        title: "POV: She begged him to go harder after watching this clip on X... Her face says everything 🔥",
-        views: "312K views • Viral",
-        embed: "https://www.example.com/embed/x-video2"
+        title: "POV: She climbs on top after watching one dirty clip… she rode me like a fucking animal",
+        views: "351K views • Viral",
+        thumb: "https://via.placeholder.com/460x280/1a1a1a/ffffff?text=POV+Riding+Teaser",
+        comments: [
+          { user: "marcus_l", text: "My wife did exactly this yesterday. Best night in months", likes: "312" },
+          { user: "tyler_brooks", text: "Zero control. Finished way too fast", likes: "204" },
+          { user: "kevinthegreat", text: "This is why I love when she watches those clips", likes: "167" },
+          { user: "nathan_hayes", text: "The energy is insane", likes: "89" }
+        ]
       },
       {
-        title: "Sex or What? This one position she found on X made her legs shake for 20 minutes straight",
-        views: "689K views • Trending Hard",
-        embed: "https://www.example.com/embed/x-video3"
+        title: "I told her 'just the tip'… she pushed back and took my entire cock in one go",
+        views: "512K views • Hot right now",
+        thumb: "https://via.placeholder.com/460x280/1a1a1a/ffffff?text=Just+The+Tip+Teaser",
+        comments: [
+          { user: "alexander_p", text: "That smile she gives when she ignores you is lethal", likes: "256" },
+          { user: "benjamin_r", text: "Happened to me last week. Still thinking about it", likes: "198" },
+          { user: "joshua_lee", text: "She went full mode after that", likes: "134" },
+          { user: "samuel_k", text: "Never trust 'just the tip' again 😂", likes: "112" }
+        ]
       },
       {
-        title: "She said 'just the tip' on X live... what happened 5 minutes later will shock you 😱",
-        views: "254K views • Hot Right Now",
-        embed: "https://www.example.com/embed/x-video4"
-      },
-      {
-        title: "Doctors are mad at this trick she learned from X... She came 3 times in one night",
-        views: "521K views",
-        embed: "https://www.example.com/embed/x-video5"
+        title: "This one nasty move girls are learning online right now has guys exploding in seconds",
+        views: "297K views • Fresh",
+        thumb: "https://via.placeholder.com/460x280/1a1a1a/ffffff?text=Nasty+Move+Teaser",
+        comments: [
+          { user: "danny_k", text: "My girlfriend started doing this… I’m completely ruined now", likes: "289" },
+          { user: "chris_torres", text: "Where do they learn this stuff??", likes: "176" },
+          { user: "ryan_23", text: "Tried it last night. Lasted maybe 40 seconds max", likes: "153" },
+          { user: "marcus_l", text: "This should come with a warning label", likes: "97" }
+        ]
       }
     ];
 
-    function createVideoCard(video) {
+    let currentIndex = 0;
+    let viewerCount = 15843;
+
+    // Live viewer counter
+    setInterval(() => {
+      viewerCount += Math.floor(Math.random() * 15) + 9;
+      document.getElementById('viewer-count').textContent = viewerCount.toLocaleString();
+    }, 3800);
+
+    function createVideoCard(video, index) {
+      let commentsHTML = '';
+      video.comments.forEach(comment => {
+        commentsHTML += `
+          <div class="comment">
+            <span class="comment-user">@${comment.user}</span><br>
+            ${comment.text}
+            <span class="reaction"> ❤️ ${comment.likes}</span>
+          </div>
+        `;
+      });
+
       const card = document.createElement('div');
       card.className = 'video-card';
+      let ribbon = index === 0 ? `<div class="trending-ribbon">TRENDING #1</div>` : '';
+
       card.innerHTML = `
-        <div class="video-container">
-          <iframe src="${video.embed}" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-          <div class="overlay">
-            <p class="views">${video.views}</p>
-            <p class="title">${video.title}</p>
-            <button class="btn" onclick="watchVideo('${video.embed}')">Watch Full Hot Scene →</button>
-          </div>
+        ${ribbon}
+        <div class="thumbnail-container" onclick="watchVideo()">
+          <img src="${video.thumb}" alt="Teaser">
+          <div class="play-button">▶</div>
         </div>
+        
+        <div class="title">${video.title}</div>
+        <div class="views">${video.views}</div>
+        
+        <div class="comments-section">
+          ${commentsHTML}
+        </div>
+
         <div class="ad-placeholder">
-          <a href="${adsterraBanner}" target="_blank" style="color:#ff99cc; text-decoration:none;">
-            🔥 Sponsored Hot Deal - Tap Here
+          <a href="${secondarySmartlink}" target="_blank" style="color:#ffbb77; text-decoration:none;">
+            🔥 Discover more intense & filthy clips
           </a>
         </div>
+
+        <button class="btn" onclick="watchVideo()">Watch Full Video Now 🔥</button>
       `;
       return card;
     }
 
-    function loadFeed() {
+    function loadMoreVideos(count = 4) {
       const feed = document.getElementById('feed');
-      videos.forEach((video, index) => {
-        feed.appendChild(createVideoCard(video));
+      const loader = document.getElementById('loader');
+      loader.style.display = 'block';
 
-        // Trigger popunder every 2 videos for better earnings
-        if ((index + 1) % 2 === 0) {
-          setTimeout(() => {
-            window.open(adsterraPopunder, '_blank');
-          }, 800);
-        }
-      });
-    }
-
-    function watchVideo(embedUrl) {
-      window.open(embedUrl, '_blank');
-      // Extra popunder on click (good for revenue)
       setTimeout(() => {
-        window.open(adsterraPopunder, '_blank');
-      }, 500);
+        for (let i = 0; i < count; i++) {
+          if (currentIndex >= videos.length) break;
+          feed.appendChild(createVideoCard(videos[currentIndex], currentIndex));
+          currentIndex++;
+        }
+        loader.style.display = 'none';
+      }, 650);
     }
 
-    // Load everything immediately (no warning gate)
-    window.onload = loadFeed;
+    function watchVideo() {
+      window.open(mainSmartlink, '_blank');
+    }
+
+    window.addEventListener('scroll', () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      if (scrollTop + clientHeight >= scrollHeight - 400) {
+        loadMoreVideos(3);
+      }
+    });
+
+    window.onload = () => {
+      loadMoreVideos(5);
+    };
   </script>
 </body>
 </html>
