@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trending Right Now</title>
+  <title>Trending Right Now 🔥</title>
   <style>
     body {
       margin: 0;
       background: #0a0a0a;
       color: #eee;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       overflow-x: hidden;
     }
     .header {
@@ -52,19 +52,6 @@
       transform: translateY(-8px);
       box-shadow: 0 18px 50px rgba(255, 80, 80, 0.5);
     }
-    .trending-ribbon {
-      position: absolute;
-      top: 12px;
-      left: -8px;
-      background: #c8102e;
-      color: white;
-      padding: 4px 32px;
-      font-size: 0.82em;
-      font-weight: 700;
-      transform: rotate(-45deg);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-      z-index: 10;
-    }
     .thumbnail-container {
       position: relative;
       height: 280px;
@@ -103,7 +90,6 @@
       line-height: 1.3;
       margin: 18px 20px 8px;
       color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
     .views {
       font-size: 0.95em;
@@ -130,6 +116,10 @@
       color: #ff6666;
       margin-left: 6px;
     }
+    .btn-container {
+      padding: 16px 20px 20px;
+      text-align: center;
+    }
     .btn {
       background: linear-gradient(#c8102e, #8B0000);
       color: #fff;
@@ -139,10 +129,11 @@
       font-weight: 800;
       cursor: pointer;
       width: 100%;
+      max-width: 380px;
       font-size: 1.25em;
-      margin: 16px 20px 10px;
       box-shadow: 0 8px 30px rgba(200, 16, 46, 0.6);
       transition: all 0.3s;
+      display: inline-block;
     }
     .btn:hover {
       background: linear-gradient(#ff4455, #c8102e);
@@ -152,7 +143,7 @@
       background: #181818;
       padding: 28px 18px;
       text-align: center;
-      margin: 10px 0 20px;
+      margin: 10px 20px 20px;
       color: #ffbb77;
       font-size: 1.05em;
       border: 2px dashed #660000;
@@ -168,18 +159,12 @@
 </head>
 <body>
 
-  <!-- Adsterra Popunder -->
+  <!-- Ad scripts -->
   <script src="https://pl29068020.profitablecpmratenetwork.com/4c/ab/9c/4cab9cf40bb7a6689f7720914e49589a.js"></script>
-
-
-  <!-- Social Bar -->
   <script src="https://pl29068023.profitablecpmratenetwork.com/e0/78/6f/e0786f5180b4646653026bb83b6cda60.js"></script>
 
-
   <div class="header">Trending Right Now</div>
-
-
-
+  
   <div class="live-counter" id="live-counter">
     🔥 <span id="viewer-count">15,843</span> people watching live
   </div>
@@ -195,7 +180,7 @@
       {
         title: "She tried that filthy new position she saw online… she squirted so hard the sheets were soaked",
         views: "428K views • Trending",
-        thumb: "https://i.imgur.com/2pjLj9C.png",
+        thumb: "images/1.png",
         comments: [
           { user: "jake_miller88", text: "Did this with my girl Friday night… she came twice back to back. Crazy.", likes: "237" },
           { user: "danny_k", text: "The shaking legs part is 100% real 😂", likes: "189" },
@@ -206,7 +191,7 @@
       {
         title: "POV: She climbs on top after watching one dirty clip… she rode me like a fucking animal",
         views: "351K views • Viral",
-        thumb: "https://i.imgur.com/7BrX0kw.png",
+        thumb: "images/2.png",
         comments: [
           { user: "marcus_l", text: "My wife did exactly this yesterday. Best night in months", likes: "312" },
           { user: "tyler_brooks", text: "Zero control. Finished way too fast", likes: "204" },
@@ -217,7 +202,7 @@
       {
         title: "I told her 'just the tip'… she pushed back and took my entire cock in one go",
         views: "512K views • Hot right now",
-        thumb: "https://i.imgur.com/Dp1oYuN.png",
+        thumb: "images/3.png",
         comments: [
           { user: "alexander_p", text: "That smile she gives when she ignores you is lethal", likes: "256" },
           { user: "benjamin_r", text: "Happened to me last week. Still thinking about it", likes: "198" },
@@ -228,12 +213,22 @@
       {
         title: "This one nasty move girls are learning online right now has guys exploding in seconds",
         views: "297K views • Fresh",
-        thumb: "https://i.imgur.com/KmUelPl.png",
+        thumb: "images/4.png",
         comments: [
           { user: "danny_k", text: "My girlfriend started doing this… I’m completely ruined now", likes: "289" },
           { user: "chris_torres", text: "Where do they learn this stuff??", likes: "176" },
           { user: "ryan_23", text: "Tried it last night. Lasted maybe 40 seconds max", likes: "153" },
           { user: "marcus_l", text: "This should come with a warning label", likes: "97" }
+        ]
+      },
+      {
+        title: "She rode me so hard the bed was shaking",
+        views: "1.3M views • Trending",
+        thumb: "images/5.png",
+        comments: [
+          { user: "tyler_brooks", text: "Zero control. Finished way too fast", likes: "204" },
+          { user: "kevinthegreat", text: "This is why I love when she watches those clips", likes: "167" },
+          { user: "nathan_hayes", text: "The energy is insane", likes: "89" }
         ]
       }
     ];
@@ -254,17 +249,15 @@
           <div class="comment">
             <span class="comment-user">@${comment.user}</span><br>
             ${comment.text}
-            <span class="reaction"> ❤️ ${comment.likes}</span>
+            <span class="reaction">❤️ ${comment.likes}</span>
           </div>
         `;
       });
 
       const card = document.createElement('div');
       card.className = 'video-card';
-      let ribbon = index === 0 ? `<div class="trending-ribbon">TRENDING #1</div>` : '';
 
       card.innerHTML = `
-        ${ribbon}
         <div class="thumbnail-container" onclick="watchVideo()">
           <img src="${video.thumb}" alt="Teaser">
           <div class="play-button">▶</div>
@@ -276,14 +269,16 @@
         <div class="comments-section">
           ${commentsHTML}
         </div>
-
+        
         <div class="ad-placeholder">
           <a href="${secondarySmartlink}" target="_blank" style="color:#ffbb77; text-decoration:none;">
             🔥 Discover more intense & filthy clips
           </a>
         </div>
-
-        <button class="btn" onclick="watchVideo()">Watch Full Video Now 🔥</button>
+        
+        <div class="btn-container">
+          <button class="btn" onclick="watchVideo()">Watch Full Video Now 🔥</button>
+        </div>
       `;
       return card;
     }
